@@ -9,10 +9,13 @@ const ChestReportPage = ({setReport, setMedicalRecord}) => {
     const [fileObj, setFileObj] = useState([]);
     const [fileArray, setFileArray] = useState([]);
     const [predictedReport, setPredictedReport] = useState("");
+    const [medicalRecordShow, setMedicalRecordShow] = useState("");
 
-    const medicalRecord1 = "{\"PatientId\": \"Bradycardia_PPM\", \"Name\": \"Sarah Thompson\", \"Age\": 62, \"Gender\": \"Female\", \"Medical History\": {\"Allergies\": null, \"Childhood Illnesses\": [\"Measles\", \"Mumps\"], \"Surgeries\": [\"Hysterectomy\"], \"Chronic Conditions\": [\"Bradycardia\"], \"Previous Injuries\": [], \"Family History\": {\"Hypertension\": [\"Mother\", \"Sister\"], \"Diabetes\": [\"Father\"], \"Heart Disease\": [\"Paternal Grandfather\"]}, \"Immunizations\": [\"Influenza\", \"Pneumonia\"], \"Lifestyle\": {\"Exercise\": [], \"Diet\": [\"Heart-healthy diet\"], \"Habits\": [\"Non-smoker\", \"Moderate alcohol consumption\"]}, \"Medications\": {\"Long-term\": [\"Beta blockers\"], \"As-needed\": []}}}"
-    const medicalRecord2 = "{\"PatientId\": \"ChatGPT_A\", \"Name\": \"Emily Anderson\", \"Age\": 34, \"Gender\": \"Female\", \"Medical History\": {\"Allergies\": \"Penicillin\", \"Childhood Illnesses\": [\"Chickenpox\", \"Measles\"], \"Surgeries\": [\"Appendectomy\"], \"Chronic Conditions\": [\"Asthma\"], \"Previous Injuries\": [\"Fractured Wrist\"], \"Family History\": {\"Hypertension\": [\"Father\"], \"Diabetes\": [\"Maternal Grandmother\"]}, \"Immunizations\": [\"Influenza\", \"Tetanus\", \"Diphtheria\", \"Pertussis\", \"MMR\"], \"Lifestyle\": {\"Exercise\": [\"Jogging\", \"Yoga\"], \"Diet\": [\"Balanced diet\"]}, \"Medications\": {\"Long-term\": [], \"As-needed\": [\"Antihistamines\"]}}}";
-    const medicalRecord3 = "{\"PatientId\": \"CXR3878_IM_1968\", \"Name\": \"Daniel Johnson\", \"Age\": 47, \"Gender\": \"Male\", \"Medical History\": {\"Allergies\": null, \"Childhood Illnesses\": [], \"Surgeries\": [], \"Chronic Conditions\": [\"Degenerative Disc Disease\"], \"Previous Injuries\": [\"Fractured Ankle\"], \"Family History\": {\"Hypertension\": [\"Father\"], \"Rheumatoid Arthritis\": [\"Paternal Aunt\"]}, \"Immunizations\": [\"Influenza\", \"Tetanus\", \"Diphtheria\", \"Pertussis\", \"Pneumonia\"], \"Lifestyle\": {\"Exercise\": [\"Cardio workouts\", \"Weight training\"], \"Diet\": [\"Well-balanced diet\"], \"Habits\": [\"Non-smoker\", \"Moderate alcohol consumption\"]}, \"Medications\": {\"Long-term\": [], \"As-needed\": [\"Over-the-counter pain relievers (NSAIDs)\"]}}}";
+    const medicalRecords = [
+        "PatientId: Bradycardia_PPM\nName: Sarah Thompson\nAge: 62\nGender: Female\nMedical History\n    Allergies:\n        - null\n    Childhood Illnesses:\n        - Measles\n        - Mumps\n    Surgeries:\n        - Hysterectomy\n    Chronic Conditions:\n        - Bradycardia\n        - Previous Injuries\n    Family History:\n        - Hypertension: Mother, Sister\n        - Diabetes: Father\n        - Heart Disease: Paternal Grandfather\n    Immunizations:\n        - Influenza\n        - Pneumonia\n    Lifestyle:\n        - Exercise: null\n        - Diet: Heart-healthy diet\n    Habits:\n        - Non-smoker\n        - Moderate alcohol consumption\n    Medications:\n        - Long-term: Beta blockers\n        - As-needed: null\n",
+        "PatientId: ChatGPT_A\nName: Emily Anderson\nAge: 34\nGender: Female\nMedical History:\n    Allergies:\n        - Penicillin\n    Childhood Illnesses\n        - Chickenpox\n        - Measles\n    Surgeries:\n        - Appendectomy\n    Chronic Conditions:\n        - Asthma\n    Previous Injuries:\n        - Fractured Wrist\n    Family History\n        - Hypertension: Father\n        - Diabetes: Maternal Grandmother\n    Immunizations:\n        - Influenza\n        - Tetanus\n        - Diphtheria\n        - Pertussis\n        - MMR\n    Lifestyle:\n        - Exercise: Jogging, Yoga\n        - Diet: Balanced diet\n    Medications\n        - Long-term: null\n        - As-needed: null\n        - Antihistamines: null\n",
+        "PatientId: CXR3878_IM_1968\nName: Daniel Johnson\nAge: 47\nGender: Male\nMedical History:\n    Allergies:\n        - null\n    Childhood Illnesses:\n        - null\n    Surgeries:\n        - null\n    Chronic Conditions:\n        - Degenerative Disc Disease\n    Previous Injuries:\n        - Fractured Ankle\n    Family History:\n        - Hypertension: Father\n        - Rheumatoid Arthritis: Paternal Aunt\n    Immunizations:\n        - Influenza\n        - Tetanus\n        - Diphtheria\n        - Pertussis\n        - Pneumonia\n    Lifestyle:\n        - Exercise: Cardio workouts, Weight training\n        - Diet: Well-balanced diet\n        - Habits: Non-smoker, Moderate alcohol consumption\n    Medications:\n        - Long-term: null\n        - As-needed: Over-the-counter pain relievers (NSAIDs)\n"
+    ];
 
     function buildFileArray() {
         var tmp_array = [];
@@ -27,10 +30,15 @@ const ChestReportPage = ({setReport, setMedicalRecord}) => {
     }
 
     useEffect(() => {
-        setMedicalRecord(medicalRecord1)
         if (fileObj.length == 0) return;
         buildFileArray()
     }, [fileObj])
+
+    useEffect(() => {
+        // var jsonString = JSON.stringify(medicalRecords[0], null, 2);
+        setMedicalRecord(medicalRecords[0]);
+        setMedicalRecordShow(medicalRecords[0]);
+    }, [])
     
     const uploadFiles = (e) => {
         e.preventDefault()
@@ -54,9 +62,8 @@ const ChestReportPage = ({setReport, setMedicalRecord}) => {
     }
 
     const handleMedicalRecordChange = (e) => {
-        if (e.target.value === "patient1") setMedicalRecord(medicalRecord1);
-        else if (e.target.value === "patient2") setMedicalRecord(medicalRecord2);
-        else setMedicalRecord(medicalRecord3)
+        setMedicalRecord(medicalRecords[e.target.value]);
+        setMedicalRecordShow(medicalRecords[e.target.value]);
     }
 
     //useEffect(() => {
@@ -84,10 +91,18 @@ const ChestReportPage = ({setReport, setMedicalRecord}) => {
             <button type="button" className="btn btn-danger btn-block" onClick={uploadFiles}>Upload</button>
             <div className="medical-records">
                 <select name="medical-records-options" id="medical-record-options" onChange={handleMedicalRecordChange} >
-                  <option value="patient1">Patient 1</option>
-                  <option value="patient2">Patient 2</option>
-                  <option value="patient3">Patient 3</option>  
+                  <option value={0}>Patient 1</option>
+                  <option value={1}>Patient 2</option>
+                  <option value={2}>Patient 3</option>  
                 </select>
+            </div>
+            <div>
+                <p>
+                    Medical Record
+                </p>
+                <textarea cols={50} rows={30} style={{"fontSize": 16, "textAlign": "left"}} defaultValue={medicalRecordShow} readOnly>
+                    
+                </textarea>
             </div>
           </header>
         </div>

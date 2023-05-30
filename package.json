@@ -2,7 +2,7 @@
   "name": "medical-report-card",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://obe1one.github.io/MedConsult-frontend-v2",
+  "homepage": "https://obe1one.github.io/MedConsult-frontend",
   "dependencies": {
     "@react-pdf/renderer": "^3.1.9",
     "@testing-library/jest-dom": "^5.16.5",

@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/MedConsult-frontend-v2/static/css/main.11c6d017.css",
-    "main.js": "/MedConsult-frontend-v2/static/js/main.723185d9.js",
-    "static/js/787.07d44435.chunk.js": "/MedConsult-frontend-v2/static/js/787.07d44435.chunk.js",
-    "static/media/chatgpt.png": "/MedConsult-frontend-v2/static/media/chatgpt.5e1132983dc3157fbd28.png",
-    "static/media/old.png": "/MedConsult-frontend-v2/static/media/old.2ee2f21366970aec7fbf.png",
-    "index.html": "/MedConsult-frontend-v2/index.html",
-    "main.11c6d017.css.map": "/MedConsult-frontend-v2/static/css/main.11c6d017.css.map",
-    "main.723185d9.js.map": "/MedConsult-frontend-v2/static/js/main.723185d9.js.map",
-    "787.07d44435.chunk.js.map": "/MedConsult-frontend-v2/static/js/787.07d44435.chunk.js.map"
+    "main.css": "/MedConsult-frontend/static/css/main.11c6d017.css",
+    "main.js": "/MedConsult-frontend/static/js/main.ff8b8dee.js",
+    "static/js/787.07d44435.chunk.js": "/MedConsult-frontend/static/js/787.07d44435.chunk.js",
+    "static/media/chatgpt.png": "/MedConsult-frontend/static/media/chatgpt.5e1132983dc3157fbd28.png",
+    "static/media/old.png": "/MedConsult-frontend/static/media/old.2ee2f21366970aec7fbf.png",
+    "index.html": "/MedConsult-frontend/index.html",
+    "main.11c6d017.css.map": "/MedConsult-frontend/static/css/main.11c6d017.css.map",
+    "main.ff8b8dee.js.map": "/MedConsult-frontend/static/js/main.ff8b8dee.js.map",
+    "787.07d44435.chunk.js.map": "/MedConsult-frontend/static/js/787.07d44435.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.11c6d017.css",
-    "static/js/main.723185d9.js"
+    "static/js/main.ff8b8dee.js"
   ]
 }
